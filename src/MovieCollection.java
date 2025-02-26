@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 public class MovieCollection
@@ -10,6 +11,7 @@ public class MovieCollection
     private ArrayList<Movie> movies = new ArrayList<Movie>();
     private ArrayList<String> possibleMovies = new ArrayList<>();
     private ArrayList<Integer> listOfIndexes = new ArrayList<>();
+    private ArrayList<String> possibleCast = new ArrayList<>();
     public MovieCollection(){}
 
     public void importData(){
@@ -83,6 +85,26 @@ public class MovieCollection
         }
     }
 
+    public static List<Integer> removeDuplicates(List<Integer> list) {
+        List<Integer> result = new ArrayList<>();
+        for (int i = 0; i < list.size(); i++) {
+            boolean isDuplicate = false;
+
+            for (int j = 0; j < i; j++) {
+                if (list.get(i).equals(list.get(j))) {
+                    isDuplicate = true;
+                    break;
+                }
+            }
+
+            if (!isDuplicate) {
+                result.add(list.get(i));
+            }
+        }
+
+        return result;
+    }
+
 
     public void searchTitles(){
         int count = 0;
@@ -111,6 +133,10 @@ public class MovieCollection
     }
 
     public void searchCast(){
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Enter an actor to see their information.");
+        String actor = scan.nextLine();
+
 
 
     }
