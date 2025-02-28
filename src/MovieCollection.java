@@ -177,35 +177,32 @@ public class MovieCollection
         System.out.println("Enter an actor to see their information.");
         String actor = scan.nextLine();
         linearSearchCast(actor);
+
+        if (possibleCast.isEmpty()) {
+            System.out.println("No actors found matching that name.");
+            return;
+        }
         removeDuplicates();
         sortAlphabetically(possibleCast);
         int count = 0;
-        for(int i = 0; i<possibleCast.size(); i++){
+        for(int i = 0; i < possibleCast.size(); i++) {
             count++;
             System.out.println(count + ":" + possibleCast.get(i));
         }
         System.out.println("Which actor's movies would you like to view? (Enter name exactly)");
         actor = scan.nextLine();
         linearSearchActor(actor);
-        if(!possibleMovies.isEmpty()){
-            sortAlphabetically(possibleMovies);
-            for(int i = 0; i<possibleMovies.size(); i++){
-                count++;
-                System.out.println(count + ":" + possibleMovies.get(i));
-            }
-            System.out.println("Which movie would you like to learn about? (Enter title exactly)") ;
-            String choice = scan.nextLine();
-            linearSearchMovie(choice);
-            printInfo();
-
+        sortAlphabetically(possibleMovies);
+        for(int i = 0; i < possibleMovies.size(); i++) {
+            count++;
+            System.out.println(count + ":" + possibleMovies.get(i));
         }
-
-
-
-
-
-
+        System.out.println("Which movie would you like to learn about? (Enter title exactly)");
+        String choice = scan.nextLine();
+        linearSearchMovie(choice);
+        printInfo();
     }
+
 
 
 }
